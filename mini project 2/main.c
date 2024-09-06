@@ -2,8 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-
-typedef struct {
+ typedef struct  {
     char nom[100];
     char nt[100];
     char am[100];
@@ -26,11 +25,11 @@ typedef struct {
             printf("       =====>>  Entre le Mail de Contact --------------- : ");
             scanf("%s",carnet[c].am);
             c++;
-                    }
+                    }else ("       =====>> Carnet Est Trouve !!!");
                  }
 
     void afficher(){
-        if (c>=1){
+        if (c>0){
         for ( i = 0; i<c;i++){
             printf("\n\n");
             printf("=====>> Contact numero %d : \n\n          Le nom du contact est                : %s" ,i+1,carnet[i].nom );
@@ -79,19 +78,27 @@ typedef struct {
                                }
 
     void modifier(){
-        if (c>=1){
+        if (c>0){
            printf("       =====>> Entre Le Nom De Contact : ");
            scanf("%s",modifier_nom);
+           printf("\n\n");
            for(int i=0 ;i<c;i++){
         if(strcmp(carnet[i].nom,modifier_nom)==0){
-         printf("entrer nouveu TELL :");
+         printf("       =====>>  Entrer le nouveu nom du contact                 : ");
+         scanf("%s",modifier_nom);
+         printf("\n");
+         printf("       =====>>  Entrer le nouveu numero de telephone de contact : ");
          scanf("%s",modifier_nt);
-         printf("entrer nouveu EMAIL :" );
+         printf("\n");
+         printf("       =====>>  Entrer le nouveu amil du contact                : ");
          scanf("%s",modifier_am);
-
+         strcpy(carnet[i].nom,modifier_nom);
          strcpy(carnet[i].nt,modifier_nt);
          strcpy(carnet[i].am,modifier_am);
+         printf("\n");
+         printf("                 =====>> Modification enregistrer !!!");
                                                  }
+                            else printf("               =====>> Contact Non Trouve !!!\n\n");
                                 }
                  }
           else printf("       =====>> Aucune contact enregistrer !!!");
@@ -136,7 +143,7 @@ printf("\n\n");
             afficher();
             break;
         case 3:
-            if (c>=1){
+            if (c>0){
             printf("       =====>> Donner le nom de contact a chercher : ");
             scanf("%s",nom);
             printf("\n\n");
@@ -148,10 +155,12 @@ printf("\n\n");
             break;
 
         case 5:
-            if (c>=1){
+            if (c>0){
             printf("       =====>> Donner le nom de contact a supprimer : ");
             scanf("%s",nom);
             supprimer(nom);
+            printf("\n\n");
+            printf("                 =====>> le contact est bien supprimer !!!");
             }else printf("       =====>> Aucune contact enregistrer !!!");
             break;
             default:
